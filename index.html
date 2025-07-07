@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>神白プロジェクト</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- AOSアニメーション -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <!-- カスタムCSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 背景固定 -->
+  <div class="fixed-bg"></div>
+  <div class="overlay-white"></div>
+  <canvas id="particle-canvas"></canvas>
+
+  <div class="content">
+
+    <!-- ヒーロー -->
+    <section class="hero">
+      <div class="hero-text-mask">
+        <h1 class="hero-text">神白<br>プロジェクト</h1>
+      </div>
+      <p class="subtitle">TOEICの点数を上げる</p>
+    </section>
+
+    <!-- ブラー背景 -->
+    <section class="background"></section>
+
+    <!-- 概要 -->
+    <section class="about-section">
+      <div class="about-text">
+        <p>
+          本プロジェクトでは、学習の動機づけとして「努力に対するリターン」を設定し学習を行います。その体験から、皆さんが英語学習に取り組む際に参考にすることを目的としています。<br><br>
+          英語学習は年収やライフスタイルに影響を及ぼす重要な自己投資です。しかし、私たち大学生の多くは英語学習に向き合えてないのが現状です。その原因として私たちは、英語学習に時間と労力を投資するに見合うリターンを知らないために、学習に向き合えていないと考えています。<br><br>
+          私たちはそれに対し、学習を始めるに際して、「時間と労力をかけるに見合う、想定される投資のリターン」を設定することが解決策になると考えました。<br><br>
+          そのため、私たちは最初にメンバーそれぞれが「想定される投資のリターン」を設定し、英語学習を行います。<br><br>
+          この検証を通じて私たちの英語力が向上する体験から皆さんが英語学習を行う時に参考になることを期待しています。
+        </p>
+      </div>
+    </section>
+
+    <!-- メンバー紹介 -->
+    <section class="members">
+      <div class="container my-5">
+        <h2 class="text-center text-info mb-4 fw-bold">メンバー紹介 </h2>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+          <div class="col" data-aos="fade-up">
+            <div class="card text-center p-3">
+              <img src="/Users/nisugi/Desktop/スクリーンショット 2025-07-01 21.27.42.png" class="card-img-top" alt="工藤育社">
+              <div class="card-body">
+                <h5 class="card-title">NE23-1100B 工藤育社（リーダー）</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col" data-aos="fade-up">
+            <div class="card text-center p-3">
+              <img src="/Users/nisugi/Desktop/スクリーンショット 2025-07-01 21.27.42.png" class="card-img-top" alt="森村柊太">
+              <div class="card-body">
+                <h5 class="card-title">NE22-1031A 森村柊太</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col" data-aos="fade-up">
+            <div class="card text-center p-3">
+              <img src="/Users/nisugi/Desktop/スクリーンショット 2025-07-01 21.27.42.png" class="card-img-top" alt="櫻庭佑哉">
+              <div class="card-body">
+                <h5 class="card-title">NE23-1125F 櫻庭佑哉</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col" data-aos="fade-up">
+            <div class="card text-center p-3">
+              <img src="/Users/nisugi/Desktop/スクリーンショット 2025-07-01 21.27.42.png" class="card-img-top" alt="廣島萌々子">
+              <div class="card-body">
+                <h5 class="card-title">NE23-1233A 廣島萌々子</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col" data-aos="fade-up">
+            <div class="card text-center p-3">
+              <img src="/Users/nisugi/Desktop/スクリーンショット 2025-07-01 21.27.42.png" class="card-img-top" alt="大嶽佑弥">
+              <div class="card-body">
+                <h5 class="card-title">NE23-1257F 大嶽佑弥</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col" data-aos="fade-up">
+            <div class="card text-center p-3">
+              <img src="/Users/nisugi/Desktop/スクリーンショット 2025-07-01 21.27.42.png" class="card-img-top" alt="二杉抹利">
+              <div class="card-body">
+                <h5 class="card-title">NE23-1267B 二杉抹利</h5>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      easing: 'ease-out',
+      once: true
+    });
+
+    const heroText = document.querySelector('.hero-text');
+    const subtitle = document.querySelector('.subtitle');
+    const overlayWhite = document.querySelector('.overlay-white');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const scale = Math.min(1 + scrollY / 200, 6);
+      heroText.style.transform = `translate(-50%, -50%) scale(${scale})`;
+      heroText.style.opacity = `${1 - scrollY / 400}`;
+      subtitle.style.opacity = `${1 - scrollY / 250}`;
+      overlayWhite.style.opacity = `${Math.max(1 - scrollY / 400, 0)}`;
+      drawParticles(scrollY);
+    });
+
+    // パーティクル
+    const canvas = document.getElementById("particle-canvas");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+
+    function initParticles() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      particles = Array.from({ length: 100 }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: 1 + Math.random() * 2,
+        speed: 0.5 + Math.random(),
+      }));
+    }
+
+    function drawParticles(scrollY) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.y -= p.speed * (1 + scrollY / 400);
+        if (p.y < -10) p.y = canvas.height + 10;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(0,0,0,0.05)";
+        ctx.fill();
+      });
+    }
+
+    window.addEventListener('resize', initParticles);
+    initParticles();
+  </script>
+</body>
+</html>

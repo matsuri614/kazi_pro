@@ -1,0 +1,183 @@
+body {
+  margin: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+  overflow-x: hidden;
+  background-color: #fff;
+}
+
+.fixed-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url("office.jpg") center center / cover no-repeat;
+  z-index: -100;
+}
+
+.overlay-white {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  z-index: 3;
+  pointer-events: none;
+  transition: opacity 0.5s ease-out;
+}
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero-text-mask {
+  position: relative;
+  z-index: 5;
+}
+
+.hero-text {
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transform-origin: center center;
+  font-size: 10vw;
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.1;
+  z-index: 5;
+  color: transparent;
+  background: url("office.jpg") center center / cover no-repeat fixed;
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: transform 0.3s ease-out, opacity 0.4s ease;
+  white-space: nowrap;
+}
+
+.subtitle {
+  position: absolute;
+  top: 600px;
+  left: 470px;
+  z-index: 5;
+  font-size: 3rem;
+  color: #0f0101;
+  margin-top: 20px;
+  transition: opacity 0.3s ease;
+}
+
+.background {
+  height: 100vh;
+  filter: blur(8px);
+  background: url("office.jpg") center center / cover no-repeat fixed;
+  z-index: 1;
+}
+
+.about-section {
+  background: transparent;
+  padding: 80px 20px;
+  z-index: 10;
+  position: relative;
+  color: white;
+}
+
+.about-text {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  line-height: 2;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+}
+
+.members {
+  background: url("member_bg.jpg") center center / cover no-repeat fixed;
+  padding: 80px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.members h2 {
+  font-weight: bold;
+  color: #120101;
+}
+
+.card {
+  background-color: rgb(16, 1, 1);
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.card-img-top {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  border: 3px solid #f472b6;
+  transition: transform 0.3s ease;
+}
+
+.card-img-top:hover {
+  transform: scale(1.1);
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #f50c0c;
+  
+}
+
+/* AOS用 */
+[data-aos] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: none;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  .hero-text {
+    font-size: 14vw;
+  }
+  .subtitle {
+    top: 500px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .about-text {
+    font-size: 1rem;
+  }
+}
